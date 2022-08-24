@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/9/2021 10:01:58 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-64GK7UP"
+  DTS:CreatorName="DESKTOP-64GK7UP\MAISDINA BUSINESS"
+  DTS:DTSID="{CC617D8E-6A94-4673-B58E-D75104353796}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="DWH DimComercial"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{0A642A50-17C0-4255-9A22-F6CB2CEBF6BA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{71F9E341-ACC0-4181-915A-C7196616F15A}"
+      DTS:ObjectName="DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-64GK7UP;Initial Catalog=MACROBUS_DWH_OumeKelthoum_SADIGH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimCom"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{F679D7D0-0243-4D41-A292-6030755713E3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimCom">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimCom\DimCommercial"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="DimCommercial"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[DimCommercial]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimCom\DimCommercial.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[customerNumber]"
+                      cachedDataType="r8"
+                      cachedName="customerNumber"
+                      externalMetadataColumnId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[customerNumber]"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[customerNumber]" />
+                    <inputColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[customerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="customerName"
+                      externalMetadataColumnId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[customerName]"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[customerName]" />
+                    <inputColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[contactLastName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="contactLastName"
+                      externalMetadataColumnId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[contactLastName]"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[contactLastName]" />
+                    <inputColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[contactFirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="contactFirstName"
+                      externalMetadataColumnId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[contactFirstName]"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[contactFirstName]" />
+                    <inputColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[city]"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[country]"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[country]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[KeyDimCommercial]"
+                      dataType="i4"
+                      name="KeyDimCommercial" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[customerNumber]"
+                      dataType="r8"
+                      name="customerNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[customerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="customerName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[contactLastName]"
+                      dataType="wstr"
+                      length="255"
+                      name="contactLastName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[contactFirstName]"
+                      dataType="wstr"
+                      length="255"
+                      name="contactFirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="255"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="255"
+                      name="country" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimCom\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCom\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimCom\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimCom\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimCom\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimCom\ODS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="ODS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [customerNumber]
+      ,[customerName]
+      ,[contactLastName]
+      ,[contactFirstName]
+      ,[city]
+      ,[country]     
+  FROM [MACROBUS_DWH_OumeKelthoum_SADIGH].[dbo].[customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimCom\ODS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[customerNumber]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[customerNumber]"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[customerNumber]"
+                      name="customerNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[customerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[customerName]"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[customerName]"
+                      name="customerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[contactLastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[contactLastName]"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[contactLastName]"
+                      name="contactLastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[contactFirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[contactFirstName]"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[contactFirstName]"
+                      name="contactFirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[city]"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[country]"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[customerNumber]"
+                      dataType="r8"
+                      name="customerNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[customerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="customerName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[contactLastName]"
+                      dataType="wstr"
+                      length="255"
+                      name="contactLastName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[contactFirstName]"
+                      dataType="wstr"
+                      length="255"
+                      name="contactFirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="255"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="255"
+                      name="country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[customerNumber]"
+                      dataType="r8"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[customerNumber]"
+                      name="customerNumber" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[customerName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[customerName]"
+                      name="customerName" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[contactLastName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[contactLastName]"
+                      name="contactLastName" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[contactFirstName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[contactFirstName]"
+                      name="contactFirstName" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[city]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimCom\ODS.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimCom.Paths[Sortie de source OLE DB]"
+              endId="Package\DimCom\DimCommercial.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\DimCom\ODS.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="119,42"
+          Id="Package\DimCom"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimCom">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="100,42"
+          Id="Package\DimCom\ODS"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\DimCom\DimCommercial"
+          TopLeft="223.5,61.5" />
+        <EdgeLayout
+          Id="Package\DimCom.Paths[Sortie de source OLE DB]"
+          TopLeft="105.5,26.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118,56"
+              Start="0,0"
+              End="110.5,56">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="55,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="55,0"
+                    Point2="59,0"
+                    Point3="59,4" />
+                  <mssgle:LineSegment
+                    End="59,52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59,52"
+                    Point2="59,56"
+                    Point3="63,56" />
+                  <mssgle:LineSegment
+                    End="110.5,56" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimCom\ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimCom\DimCommercial">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

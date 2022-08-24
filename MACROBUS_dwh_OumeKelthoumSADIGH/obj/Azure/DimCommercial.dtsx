@@ -1,0 +1,510 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/11/2021 1:44:01 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-64GK7UP"
+  DTS:CreatorName="DESKTOP-64GK7UP\MAISDINA BUSINESS"
+  DTS:DTSID="{22F52F23-100E-4541-A6DC-46B64E069940}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="DimCommercial"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{F090BEEF-335A-4482-A6FE-12EED392898E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{30DBB6E0-FEC5-47D7-9365-5B150F1C81B2}"
+      DTS:ObjectName="DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-64GK7UP;Initial Catalog=MACROBUS_DWH_OumeKelthoum_SADIGH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Tâche de flux de données"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{D688AE3B-04A9-4DFD-A5BF-C236446A42BB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tâche de flux de données">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tâche de flux de données\DimCommercial"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="DimCommercial"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[DimCommercial]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\DimCommercial.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[employeeNumber]"
+                      cachedDataType="r8"
+                      cachedName="employeeNumber"
+                      externalMetadataColumnId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[employeeNumber]"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[employeeNumber]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[CommercialName]"
+                      cachedDataType="wstr"
+                      cachedLength="511"
+                      cachedName="CommercialName"
+                      externalMetadataColumnId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[CommercialName]"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[CommercialName]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[Email]"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[OfficeCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="OfficeCode"
+                      externalMetadataColumnId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[OfficeCode]"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[OfficeCode]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].Columns[job]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="job"
+                      externalMetadataColumnId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[job]"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[job]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[KeyDimCom]"
+                      dataType="i4"
+                      name="KeyDimCom" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[employeeNumber]"
+                      dataType="wstr"
+                      length="255"
+                      name="employeeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[CommercialName]"
+                      dataType="wstr"
+                      length="511"
+                      name="CommercialName" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[OfficeCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="OfficeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB].ExternalColumns[job]"
+                      dataType="wstr"
+                      length="255"
+                      name="job" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\DimCommercial.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\ods"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="ods"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT distinct [employeeNumber],
+      concat([lastName],' ',[firstName]) CommercialName
+      ,[email] Email
+	  ,[OfficeCode]
+      ,[jobTitle] job
+  FROM [MACROBUS_DWH_OumeKelthoum_SADIGH].[dbo].[employee]
+   where jobTitle = 'Sales Rep'</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\ods.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-64GK7UP.MACROBUS_DWH_OumeKelthoum_SADIGH]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[employeeNumber]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[employeeNumber]"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[employeeNumber]"
+                      name="employeeNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[CommercialName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[CommercialName]"
+                      length="511"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[CommercialName]"
+                      name="CommercialName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[Email]"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[OfficeCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[OfficeCode]"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[OfficeCode]"
+                      name="OfficeCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[job]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[job]"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].Columns[job]"
+                      name="job"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[employeeNumber]"
+                      dataType="r8"
+                      name="employeeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[CommercialName]"
+                      dataType="wstr"
+                      length="511"
+                      name="CommercialName" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[OfficeCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="OfficeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB].ExternalColumns[job]"
+                      dataType="wstr"
+                      length="255"
+                      name="job" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[employeeNumber]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[employeeNumber]"
+                      name="employeeNumber" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[CommercialName]"
+                      dataType="wstr"
+                      length="511"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[CommercialName]"
+                      name="CommercialName" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[OfficeCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[OfficeCode]"
+                      name="OfficeCode" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[job]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[job]"
+                      name="job" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\ods.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de source OLE DB]"
+              endId="Package\Tâche de flux de données\DimCommercial.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Tâche de flux de données\ods.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Tâche de flux de données"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tâche de flux de données">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="95,42"
+          Id="Package\Tâche de flux de données\ods"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Tâche de flux de données\DimCommercial"
+          TopLeft="247.5,71.5" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de source OLE DB]"
+          TopLeft="53,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="271,24"
+              Start="0,0"
+              End="271,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8"
+                    Point2="0,12"
+                    Point3="4,12" />
+                  <mssgle:LineSegment
+                    End="267,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="267,12"
+                    Point2="271,12"
+                    Point3="271,16" />
+                  <mssgle:LineSegment
+                    End="271,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tâche de flux de données\DimCommercial">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tâche de flux de données\ods">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
